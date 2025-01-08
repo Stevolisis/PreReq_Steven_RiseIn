@@ -1,12 +1,14 @@
 ## TX Link
 ```bash 
-https://explorer.solana.com/tx/2iqCs4NXr9Ccuz8CFd9edzpsZB6FxnRssSTmjkhjD3vJ4Vx87SsHVPxFbmGJWsKxYMPigNGFKMjPXi6WDegAkUdk?cluster=devnet
+ https://explorer.solana.com/tx/BSJGNa4eHskdhc3f3GwdBryUhuYKfhxAMVYxr4NdWwThmQeqmf8hbkNY5i5CvM2zZ3iVpcDv9aecqDmHg9NmkY4?cluster=devnet
 ```
 
-# WBA Final Project
+# Prerequisites: Enrollment dApp
 
 ## Overview
-This project is an interaction with the WBA program deployed on the Solana Devnet. It demonstrates key concepts from the course:
+These prerequisites are meant to assess your ability to follow processes, execute tasks, debug
+simple errors (intentionally placed), and ship code. They are not a test of your typescript or
+coding skills.
 
 - **Program Derived Addresses (PDA)**: PDAs allow us to sign transactions with a Public Key derived from a deterministic seed, providing additional security.
 - **Interface Definition Language (IDL)**: The IDL is a JSON file that defines the public interface for interacting with the program. It contains account structures, instructions, and error codes for Solana programs.
@@ -20,7 +22,7 @@ In this final project, we enroll our GitHub username on the blockchain to mark o
 This project interacts with the WBA program using Solana's Anchor framework. Here's an overview of what each file does:
 
 - **enroll.ts**: This is the main script that connects to the Solana Devnet and submits your GitHub account to the WBA program, proving that you've completed the course prerequisites.
-- **programs/wba_prereq.ts**: Contains the TypeScript definition of the program's IDL. It defines the structure of the WBA program and its functions.
+- **programs/Turbin3_prereq.ts**: Contains the TypeScript definition of the program's IDL. It defines the structure of the Turbin3_prereq program and its functions.
 - **wallet.json**: Contains the private key of your Solana wallet. This file is used to sign transactions.
 - **tsconfig.json**: Contains TypeScript configuration settings, including enabling JSON module resolution.
 
