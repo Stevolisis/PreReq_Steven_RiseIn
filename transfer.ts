@@ -7,19 +7,31 @@ const connection = new Connection("https://api.devnet.solana.com");
 
 (async()=>{
     try{
+        const balance = await connection.getBalance(from.publicKey); 
         const transaction = new Transaction().add(SystemProgram.transfer({
             fromPubkey: from.publicKey,
             toPubkey: to,
-            lamports: LAMPORTS_PER_SOL/100
+            lamports: balance
         }));
         transaction.recentBlockhash = (await connection.getLatestBlockhash("confirmed")).blockhash;
         transaction.feePayer = from.publicKey;
 
+        // Calculate exact fee
+        const fee = (await connection.getFeeForMessage(transaction.compileMessage(),'confirmed')).value || 0;
+        transaction.instructions.pop();
+
+        transaction.add(SystemProgram.transfer({
+            fromPubkey: from.publicKey,
+            toPubkey: to,
+            lamports: balance - fee
+        }));
+        
         const signature = await sendAndConfirmTransaction(
             connection,
             transaction,
             [from]
         );
+
         console.log(`Success! Check out your TX here: https://explorer.solana.com/tx/${signature}?cluster=devnet`);
 
     }catch(e){
@@ -27,4 +39,8 @@ const connection = new Connection("https://api.devnet.solana.com");
     }
 })();
 
+//Transfer 0.1 sol
 //https://explorer.solana.com/tx/2HkfALxRD5gUKxTsn7DcQcr8T2SraYajNddEdkVpcsiXjy6oCdJumCNNPT5MhT5xLiAYkXnXkXHqrDo3fKxSRkk7?cluster=devnet
+
+//Empty devnet wallet into Turbin3 wallet
+//https://explorer.solana.com/tx/5iz6gjU2ktwDzwASeAiLXYAv2vdJ2sjEw6uqhZnVkGVDikrsqfciDzmu293uNgGQujw2REdyDJdcssYzkze6T4V2?cluster=devnet
