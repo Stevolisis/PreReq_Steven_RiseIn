@@ -32,29 +32,31 @@ This project interacts with the WBA program using Solana's Anchor framework. Her
 
 1. **Clone the Repository**:
    ```bash
-   git clone git@github.com:Stevolisis/turbin3-steven-joseph-final-project.git
+   git clone git@github.com:Stevolisis/PreReq_Steven_RiseIn.git
     ```
     ```bash 
-    cd turbin3-steven-joseph-final-project
+    cd PreReq_Steven_RiseIn
     ```
 
 2. **Install Repo**:
    ```bash
    yarn install
-    ```
+   ```
 
 3. **Generate your wallet.json**:
    ```bash
-   solana-keygen new --outfile wallet.json
-    ```
+   yarn keygen
+   ```
 
-4. **Request SOL using you wallet public key**:
-   Head to https://faucet.solana.com and request SOL
+4 **Transfer SOL**:
+   ```bash
+   yarn transfer
+   ```
 
 5. **Run the Enrollment Script**:
    ```bash
-   yarn ts-node enroll.ts
-    ```
+   yarn enroll
+   ```
 
 6. **Expected Output**:
    ```bash
